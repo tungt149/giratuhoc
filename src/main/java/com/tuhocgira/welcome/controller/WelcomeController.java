@@ -8,6 +8,7 @@ public class WelcomeController {
 
 	@GetMapping("/welcome")
 	public Object Welcome() {
-		return "welcome to tu hoc";
+		return "Welcome to Gira Apllication";
 	}
+
 }
