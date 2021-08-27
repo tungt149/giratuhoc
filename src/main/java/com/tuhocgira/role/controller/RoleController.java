@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tuhocgira.common.util.ResponseHandler;
+import com.tuhocgira.dto.AddProgramDto;
 import com.tuhocgira.dto.CreateRoleDto;
+import com.tuhocgira.dto.RoleDto;
 import com.tuhocgira.role.entity.Role;
 import com.tuhocgira.service.RoleService;
 
@@ -31,7 +33,7 @@ public class RoleController {
 	@GetMapping
 	public Object findAllRole() {
 
-		List<Role> roles = service.findAll();
+		List<RoleDto> roles = service.findAll();
 		return ResponseHandler.getResponse(roles, HttpStatus.OK);
 	}
 
@@ -44,4 +46,11 @@ public class RoleController {
 		return ResponseHandler.getResponse(addedRole, HttpStatus.CREATED);
 	}
 
+	@PostMapping("/add-program")
+	public Object addProgram(@Valid @RequestBody AddProgramDto dto,BindingResult errors) {
+		if(errors.hasErrors())
+			return ResponseHandler.getResponse(errors, HttpStatus.BAD_REQUEST);
+		Role updatedRole = service.addProgram(dto);
+		return ResponseHandler.getResponse(updatedRole, HttpStatus.OK);
+	}
 }
