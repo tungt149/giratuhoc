@@ -13,6 +13,8 @@ public interface ProgramService {
 	List<ProgramDto> findAll();
 
 	Program save(CreateProgramDto dto) ;
+
+	boolean isExistId(Long programId);
 	
 	
 

@@ -33,4 +33,12 @@ public class ProgramServiceIpml implements ProgramService {
 		return repository.save(program);
 	}
 
+
+	@Override
+	public boolean isExistId(Long programId) {
+		return repository.existsById(programId);
+	}
+
+	
+
 }
