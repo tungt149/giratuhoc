@@ -43,6 +43,16 @@ public class RoleServiceIpml implements RoleService {
 	}
 
 	@Override
+	public Role updateRole(UpdateRoleDto dto, Long id) {
+		Role role = repository.getById(id);
+
+		role.setName(dto.getName().toUpperCase()); // add uppercase
+		role.setDescription(dto.getDescription());
+
+		return repository.save(role);
+	}
+
+	@Override
 	public Role addProgram(@Valid AddProgramDto dto) {
 		Role role = repository.getById(dto.getRoleId());
 		Program program = programRepository.getById(dto.getProgramId());
@@ -65,26 +75,14 @@ public class RoleServiceIpml implements RoleService {
 	}
 
 	@Override
-	public Role updateRole(UpdateRoleDto dto, Long id) {
-		Role role = repository.getById(id);
-
-		role.setName(dto.getName().toUpperCase()); // add uppercase
-		role.setDescription(dto.getDescription());
-
-		return repository.save(role);
-	}
-
-	@Override
 	public void deleteById(Long roleId) {
 		repository.deleteById(roleId);
 
 	}
 
-
-	
 	@Override
 	public boolean existRoleId(Long roleId) {
 		return repository.existsById(roleId);
-	
+
 	}
 }

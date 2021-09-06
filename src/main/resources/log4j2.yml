@@ -1,0 +1,19 @@
+Configuation:
+  name: log4j2config
+  
+  Appenders:
+    Console:
+      name: ConsoleLog
+      target: SYSTEM_OUT
+      PatternLayout:
+        Pattern: "%style{%d{yyyy-MM-dd HH:mm:ss}}{green} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %msg%n"
+    
+    RollingFile:
+      name: RollingFileAppender
+  
+  Loggers:
+    Root:
+      Level: trace
+      AppenderRef:
+        - ref: Console
+        - ref: RollingFileAppender

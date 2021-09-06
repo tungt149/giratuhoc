@@ -19,27 +19,30 @@ import com.tuhocgira.user.repository.UserRepository;
 @Service
 public class UserServiceDetailsImpl implements UserDetailsService {
 	private UserRepository repository;
-
+	
 	public UserServiceDetailsImpl(UserRepository userRepository) {
 		repository = userRepository;
 	}
-
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Optional<User> user = repository.findByUsernameWithGroup(username);
-		if (!user.isPresent())
-			throw new UsernameNotFoundException("Username is not exist");
+		Optional<User> user = repository. findByUsernameWithGroup(username);
+		
+		if(!user.isPresent())
+			throw new UsernameNotFoundException("Username is not existed.");
+		
 		Set<GrantedAuthority> authorities = getAuthorities(user.get().getGroups());
-
+		
 		return new UserDetailsDto(username, user.get().getPassword(), authorities);
 	}
 
 	private Set<GrantedAuthority> getAuthorities(Set<Group> groups) {
 		Set<GrantedAuthority> authorities = new HashSet<>();
-		for (Group group : groups) {
+		
+		for(Group group : groups) {
 			authorities.add(new SimpleGrantedAuthority(group.getName()));
 		}
+		
 		return authorities;
 	}
-
 }

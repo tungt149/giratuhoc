@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tuhocgira.common.util.ResponseHandler;
 import com.tuhocgira.dto.AddRoleDto;
+import com.tuhocgira.dto.AddUserDto;
 import com.tuhocgira.dto.CreateGroupDto;
 
 import com.tuhocgira.dto.GroupDto;
@@ -48,13 +49,19 @@ public class GroupController {
 
 	@PostMapping("/add-role")
 	public Object addRole(@Valid @RequestBody AddRoleDto dto, BindingResult errors) {
-		if(errors.hasErrors())
+		if (errors.hasErrors())
 			return ResponseHandler.getResponse(errors, HttpStatus.BAD_REQUEST);
-		
+
 		Group addRole = service.addNewRole(dto);
-		
-		
-		return ResponseHandler.getResponse(addRole,HttpStatus.OK);
+
+		return ResponseHandler.getResponse(addRole, HttpStatus.OK);
 	}
 
+	@PostMapping("/add-user")
+	public Object addUserGroup(@Valid @RequestBody AddUserDto dto, BindingResult errors) {
+		if (errors.hasErrors())
+			return ResponseHandler.getResponse(errors, HttpStatus.BAD_REQUEST);
+		Group updateGroup = service.addUser(dto);
+		return ResponseHandler.getResponse(updateGroup, HttpStatus.OK);
+	}
 }

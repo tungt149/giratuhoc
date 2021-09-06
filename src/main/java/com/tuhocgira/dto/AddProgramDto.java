@@ -6,7 +6,11 @@ import javax.validation.constraints.NotNull;
 import com.tuhocgira.role.validation.anotation.ExistProgramId;
 import com.tuhocgira.role.validation.anotation.ExistRoleId;
 
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 
 public class AddProgramDto {
 	
@@ -20,16 +24,4 @@ public class AddProgramDto {
 		@ExistProgramId
 		private Long programId;
 		
-		public Long getRoleId() {
-			return roleId;
-		}
-		public void setRoleId(Long roleId) {
-			this.roleId = roleId;
-		}
-		public Long getProgramId() {
-			return programId;
-		}
-		public void setProgramId(Long programId) {
-			this.programId = programId;
-		}
 	}

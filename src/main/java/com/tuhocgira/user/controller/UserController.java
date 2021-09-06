@@ -19,7 +19,7 @@ import com.tuhocgira.user.entity.User;
 import com.tuhocgira.user.service.UserService;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("api/user")
 public class UserController {
 	private UserService service;
 

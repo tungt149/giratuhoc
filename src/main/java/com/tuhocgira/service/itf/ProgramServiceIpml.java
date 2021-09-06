@@ -26,19 +26,19 @@ public class ProgramServiceIpml implements ProgramService {
 
 	@Override
 	public Program save(CreateProgramDto dto) {
-		Program program = new Program();
-		program.setName(dto.getName());
-		program.setMethod(dto.getMethods());
-		program.setPath(dto.getPath());
+//		Program program = new Program();
+//		program.setName(dto.getName());
+//		program.setMethod(dto.getMethods());
+//		program.setPath(dto.getPath());
+//		return repository.save(program);
+		Program program = Program.builder()
+				.name(dto.getName()).method(dto.getMethods()).path(dto.getPath()).build();
 		return repository.save(program);
 	}
-
 
 	@Override
 	public boolean isExistId(Long programId) {
 		return repository.existsById(programId);
 	}
-
-	
 
 }

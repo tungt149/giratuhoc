@@ -13,7 +13,7 @@ public class ResponseHandler {
 		Map<String, Object> map = new HashMap<>();
 		map.put("content", content);
 		map.put("errors", "");
-		map.put("timestamp", LocalDateTime.now());
+		map.put("timestamp",DateUtils.toString( LocalDateTime.now()));
 		map.put("status", status.value());
 		return new ResponseEntity<Object>(map, status);
 	}
@@ -21,7 +21,7 @@ public class ResponseHandler {
 		Map<String, Object> map = new HashMap<>();
 		map.put("content", "");
 		map.put("errors", ErrorUtils.getErrorMessages(errors));
-		map.put("timestamp", LocalDateTime.now());
+		map.put("timestamp", DateUtils.toString( LocalDateTime.now()));
 		map.put("status", status.value());
 		return new ResponseEntity<Object>(map, status);
 	}
@@ -29,7 +29,7 @@ public class ResponseHandler {
 		Map<String, Object> map = new HashMap<>();
 		map.put("content", "");
 		map.put("errors", "");
-		map.put("timestamp", LocalDateTime.now());
+		map.put("timestamp", DateUtils.toString( LocalDateTime.now()));
 		map.put("status", status.value());
 		return new ResponseEntity<Object>(map, status);
 	}

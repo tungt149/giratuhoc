@@ -22,7 +22,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 
 	
-	@Query("SELECT u FROM User u JOIN FETCH u.groups")
+	@Query("SELECT u FROM User u LEFT JOIN FETCH u.groups WHERE u.userName =?1")
 	Optional<User> findByUsernameWithGroup(String username);
 
 }

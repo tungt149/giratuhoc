@@ -1,20 +1,19 @@
 package com.tuhocgira.dto;
 
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+
+import com.sun.istack.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
-@Getter
+
 @Setter
-public class AddRoleDto {
+@Getter
+public class AddUserDto {
 	@NotNull
 	@Min(value = 1)
-	private Long RoleId;
+	private Long userId;
 	@NotNull
 	@Min(value = 1)
 	private Long GroupId;
-
-
-
 }

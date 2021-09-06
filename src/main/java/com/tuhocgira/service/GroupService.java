@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.tuhocgira.dto.AddRoleDto;
+import com.tuhocgira.dto.AddUserDto;
 import com.tuhocgira.dto.CreateGroupDto;
 
 import com.tuhocgira.dto.GroupDto;
@@ -19,5 +20,7 @@ public interface GroupService {
 	Group addNewGroup(CreateGroupDto dto);
 
 	Group addNewRole(@Valid AddRoleDto dto);
+
+	Group addUser(@Valid AddUserDto dto);
 
 }
